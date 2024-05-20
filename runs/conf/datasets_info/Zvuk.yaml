@@ -1,0 +1,9 @@
+name: Zvuk
+data_path: ${oc.env:RECSYS_DATA_PATH}/zvuk.csv
+path_to_prep_data: ${oc.env:PREP_DATA_PATH}/zvuk.csv
+path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+column_name:  
+  user_id: 'user_id'
+  item_id: 'track_id'
+  timestamp: 'datetime'
+time_coding: 's'

@@ -1,0 +1,9 @@
+name: Movielens
+data_path: ${oc.env:RECSYS_DATA_PATH}/Movielens.csv
+path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Movielens.csv
+path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+column_name:  
+  user_id: 'user_id'
+  item_id: 'item_id'
+  timestamp: 'timestamp'
+time_coding: 's'

@@ -1,0 +1,40 @@
+cuda_visible_devices: 0
+random_state: 17
+defaults:
+  - _self_
+  - datasets_info: Movielens
+  - prepr: prepr
+  - splitter: splitter
+
+shuffle_inference: True
+jaccard: True
+
+dataset_params:
+  max_length: 128
+
+dataloader:
+  batch_size: 128
+  test_batch_size: 256
+  num_workers: 8
+ 
+model: SASRec
+model_params:
+  maxlen: ${dataset_params.max_length}
+  hidden_units: 64
+  num_blocks: 2
+  num_heads: 2
+  dropout_rate: 0.1
+  
+seqrec_module:
+  lr: 0.001
+  predict_top_k: 10  # this value is used for validation
+  filter_seen: False
+
+trainer_params:
+  max_epochs: 100
+patience: 5
+top_k_metrics: [10]
+
+download_data: False
+project_name: sequential_datasets/filter_false/${datasets_info.name}
+task_name: 'experiments'

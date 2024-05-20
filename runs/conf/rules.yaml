@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - datasets_info: Movielens
+  - prepr: prepr 
+
+rule_params:
+  n_gram_order: 2
+  support_threshold: 5
+  confidence_threshold: 0.1
+
+random_state: 17
+download_data: True
+project_name: sequential_datasets/final_rules
+task_name: 'experiments'

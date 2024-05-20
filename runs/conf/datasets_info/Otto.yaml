@@ -1,0 +1,9 @@
+name: Otto
+data_path: ${oc.env:RECSYS_DATA_PATH}/Otto_300k.csv
+path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Otto.csv
+path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+column_name:
+  user_id: 'session'
+  item_id: 'aid'
+  timestamp: 'ts'
+time_coding: 'ms'

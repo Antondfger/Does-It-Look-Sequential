@@ -1,0 +1,9 @@
+name: Diginetica
+data_path: ${oc.env:RECSYS_DATA_PATH}/Diginetica.csv
+path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Diginetica.csv
+path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+column_name:  
+  user_id: 'sessionId'
+  item_id: 'itemId'
+  timestamp: 'timeframe'
+time_coding: 's'

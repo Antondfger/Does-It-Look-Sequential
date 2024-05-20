@@ -1,0 +1,10 @@
+cuda_visible_devices: 0
+defaults:
+  - _self_
+  - datasets_info: Movielens
+  - prepr: prepr
+  - splitter: splitter
+  
+download_data: True
+project_name: sequential_datasets/statistics
+task_name: 'experiments'

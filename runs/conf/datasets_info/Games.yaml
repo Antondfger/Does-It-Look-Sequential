@@ -1,0 +1,9 @@
+name: Games
+data_path: ${oc.env:RECSYS_DATA_PATH}/Games.csv
+path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Games.csv
+path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+column_name:  
+  user_id: 'user_id:token'
+  item_id: 'item_id:token'
+  timestamp: 'timestamp:float'
+time_coding: 's'

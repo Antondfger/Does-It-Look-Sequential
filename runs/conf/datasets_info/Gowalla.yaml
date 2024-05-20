@@ -1,0 +1,9 @@
+name: Gowalla
+data_path: ${oc.env:RECSYS_DATA_PATH}/Gowalla.csv
+path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Gowalla.csv
+path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+column_name:  
+  user_id: 'user'
+  item_id: 'location_id'
+  timestamp: 'time'
+time_coding: 's'
