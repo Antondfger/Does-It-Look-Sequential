@@ -23,12 +23,5 @@ sh dl.sh
 sh rule.sh
 sh statistics.sh
 ```
-
-
-
-
-
-
-
-
-#### In the [datasets](datasets) folder, you will find detailed information about the process of selecting datasets for this project.
+# Datasets selection
+ In the [datasets](datasets) folder, you will find detailed information about the process of selecting datasets for this project.
