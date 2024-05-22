@@ -19,11 +19,8 @@ Scripts to reproduce dataset statistics: statistics.sh
 
 ```sh
 cd runs
-
 sh dl.sh
-
 sh rule.sh
-
 sh statistics.sh
 ```
 
