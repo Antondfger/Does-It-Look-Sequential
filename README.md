@@ -5,7 +5,7 @@ We apply several methods based on the random shuffling of the user's sequence of
 ## Main results
 |---------------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|
 | Datasets      | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative |
-|              | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   |
+  |               | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   |
 |---------------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|
 | Beauty        | 443     | 11,6    | -97\%    | 131     | 0,0     | -100\%   | 0,042   | 0,026   | -39\%    | 0,019   | 0,011   | -43\%    | 0,94    | 0,24    | -74\%    |
 | Diginetica    | 1464    | 379,4   | -74\%    | 64      | 3,6     | -94\%    | 0,333   | 0,286   | -14\%    | 0,161   | 0,149   | -7\%     | 0,55    | 0,52    | -6\%     |
