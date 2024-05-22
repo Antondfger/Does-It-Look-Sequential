@@ -9,7 +9,7 @@ For configuration we use [Hydra](https://hydra.cc/). Parameters are specified in
 
 Example of run via command line:
 ```sh
-cd src
+cd runs
 python dl.py datasets_info=Movielens
 ```
 
