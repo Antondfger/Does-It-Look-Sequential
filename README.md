@@ -13,9 +13,13 @@ cd runs
 python dl.py datasets_info=Movielens
 ```
 ### Reproduce paper results
-Scripts to reproduce SRS's results: dl.py \
-Scripts to reproduce the strength of sequential patterns: rule.py \
-Scripts to reproduce dataset statistics: statistics.py
+Scripts to reproduce SRS's results: dl.sh \
+```sh
+cd runs
+sh dl.sh 
+```
+Scripts to reproduce the strength of sequential patterns: rule.sh \
+Scripts to reproduce dataset statistics: statistics.sh
 
 
 
