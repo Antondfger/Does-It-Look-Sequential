@@ -4,7 +4,7 @@ Sequential recommender systems are an important and demanded area of research. S
 We apply several methods based on the random shuffling of the user's sequence of interactions to assess the strength of sequential structure across 15 datasets, frequently used for sequential recommender systems evaluation in recent research papers presented at top-tier conferences. As shuffling explicitly breaks sequential dependencies inherent in datasets, we estimate the strength of sequential patterns by comparing metrics for shuffled and original versions of the dataset. Our findings show that several popular datasets have a rather weak sequential structure.
 ## Main results
 |---------------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|
-| Datasets      | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative |
+| Datasets      | Before \| After \ | Relative\| Before \| After   | Relative\| Before \| After  \| Relative\| Before \| After  \| Relative\| Before \| After  \| Relative |
 |               | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   |
 |---------------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|
 | Beauty        | 443     | 11,6    | -97\%    | 131     | 0,0     | -100\%   | 0,042   | 0,026   | -39\%    | 0,019   | 0,011   | -43\%    | 0,94    | 0,24    | -74\%    |
