@@ -3,10 +3,13 @@
 Sequential recommender systems are an important and demanded area of research. Such systems aim to use the order of interactions in a user’s history to predict future interactions. The premise is that the order of interactions and sequential patterns play an important role. Therefore, it is crucial to use datasets that exhibit a sequential structure for a proper evaluation of sequential recommenders. \
 We apply several methods based on the random shuffling of the user's sequence of interactions to assess the strength of sequential structure across 15 datasets, frequently used for sequential recommender systems evaluation in recent research papers presented at top-tier conferences. As shuffling explicitly breaks sequential dependencies inherent in datasets, we estimate the strength of sequential patterns by comparing metrics for shuffled and original versions of the dataset. Our findings show that several popular datasets have a rather weak sequential structure.
 ## Main results
-|               | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative |
 |---------------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|
+|               |           2-grams            |           3-grams            |         Hit Rate@10          |           NDCG@10            |          Jaccard@10          |
+|---------------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|
+| Datasets      | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative | Before  | After   | Relative |
 |               | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   | shuffle | shuffle | change   |
-| \hline Beauty | 443     | 11,6    | -97\%    | 131     | 0,0     | -100\%   | 0,042   | 0,026   | -39\%    | 0,019   | 0,011   | -43\%    | 0,94    | 0,24    | -74\%    |
+|---------------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|---------|---------|----------|
+| Beauty        | 443     | 11,6    | -97\%    | 131     | 0,0     | -100\%   | 0,042   | 0,026   | -39\%    | 0,019   | 0,011   | -43\%    | 0,94    | 0,24    | -74\%    |
 | Diginetica    | 1464    | 379,4   | -74\%    | 64      | 3,6     | -94\%    | 0,333   | 0,286   | -14\%    | 0,161   | 0,149   | -7\%     | 0,55    | 0,52    | -6\%     |
 | OTTO          | 4907    | 491,8   | -90\%    | 1942    | 69,0    | -96\%    | 0,205   | 0,143   | -30\%    | 0,120   | 0,086   | -28\%    | 0,56    | 0,28    | -50\%    |
 | RetailRocket  | 2463    | 1145,0  | -54\%    | 730     | 238,4   | -67\%    | 0,326   | 0,315   | -4\%     | 0,195   | 0,190   | -2\%     | 0,66    | 0,47    | -29\%    |
