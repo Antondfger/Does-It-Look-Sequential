@@ -5,6 +5,10 @@ We apply several methods based on the random shuffling of the user's sequence of
 ## Main results
 
 ## Usage
+Install requirements:
+```sh
+pip install -r requirements.txt
+```
 For configuration we use [Hydra](https://hydra.cc/). Parameters are specified in [config files](runs/conf/), they can be overriden from the command line. Optionally it is possible to use [ClearML](`https://clear.ml/docs/latest/docs`) for experiments logging (`project_name` and `task_name` should be specified in config to use ClearML).
 
 Example of run via command line:
