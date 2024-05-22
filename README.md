@@ -3,6 +3,11 @@
 Sequential recommender systems are an important and demanded area of research. Such systems aim to use the order of interactions in a user’s history to predict future interactions. The premise is that the order of interactions and sequential patterns play an important role. Therefore, it is crucial to use datasets that exhibit a sequential structure for a proper evaluation of sequential recommenders. \
 We apply several methods based on the random shuffling of the user's sequence of interactions to assess the strength of sequential structure across 15 datasets, frequently used for sequential recommender systems evaluation in recent research papers presented at top-tier conferences. As shuffling explicitly breaks sequential dependencies inherent in datasets, we estimate the strength of sequential patterns by comparing metrics for shuffled and original versions of the dataset. Our findings show that several popular datasets have a rather weak sequential structure.
 ## Main results
+In this paper, we proposed a set of three approaches to evaluate a dataset's sequential structure strength. We further analyzed a wide range of datasets from different domains that are commonly used for the evaluation of SRSs. The results of our experiments show that many popular datasets, namely Diginetica, Foursquare, Gowalla, RetailRocket, Steam, and Yelp, lack a sequential structure.
+Whether these datasets are suitable for evaluating sequential recommendations is questionable and needs further research.
+
+The datasets selected for evaluation must be aligned with the task at hand. Conclusions drawn about the relative performance of different algorithms may change after selecting more appropriate datasets. Whether this is true or not is a possible future research direction, as well as further investigation of approaches to the assessment of sequential structure in datasets.
+
 | Dataset      | HR@10 | NDCG@10 | Jaccard@10 | 2-grams | 3-grams |
 |--------------|-------|---------|------------|---------|---------|
 | Beauty       | -39%  | -43%    | -74%       | -97%    | -100%   |
