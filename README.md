@@ -31,6 +31,15 @@ Install requirements:
 ```sh
 pip install -r requirements.txt
 ```
+Specify environment variables. Where PATH4SEQ is the path to the project, RECSYS_DATA_PATH is the path to the raw data, PREP_DATA_PATH is the path where the data will be stored after preprocessing.
+```sh
+export RECSYS_DATA_PATH="${RECSYS_DATA_PATH}/your/path"
+
+export PREP_DATA_PATH="${PREP_DATA_PATH}/your/path"
+
+export SPLIT_DATA_PATH="${SPLIT_DATA_PATH}/your/path"
+```
+
 For configuration we use [Hydra](https://hydra.cc/). Parameters are specified in [config files](runs/conf/), they can be overriden from the command line. Optionally it is possible to use [ClearML](`https://clear.ml/docs/latest/docs`) for experiments logging (`project_name` and `task_name` should be specified in config to use ClearML).
 
 Example of run via command line:
