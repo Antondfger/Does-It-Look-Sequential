@@ -36,5 +36,5 @@ patience: 5
 top_k_metrics: [10]
 
 download_data: False
-project_name: sequential_datasets/filter_false/${datasets_info.name}
+#project_name: sequential_datasets/filter_false/${datasets_info.name}
 task_name: 'experiments'
