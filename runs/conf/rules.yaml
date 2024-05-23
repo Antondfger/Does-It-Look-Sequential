@@ -10,5 +10,5 @@ rule_params:
 
 random_state: 17
 download_data: True
-project_name: sequential_datasets/final_rules
+#project_name: sequential_datasets/final_rules
 task_name: 'experiments'
