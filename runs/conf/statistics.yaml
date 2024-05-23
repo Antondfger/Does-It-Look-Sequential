@@ -6,5 +6,5 @@ defaults:
   - splitter: splitter
   
 download_data: True
-project_name: sequential_datasets/statistics
+#project_name: sequential_datasets/statistics
 task_name: 'experiments'
