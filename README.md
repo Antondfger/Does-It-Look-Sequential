@@ -6,7 +6,9 @@ We apply several methods based on the random shuffling of the user's sequence of
 In this paper, we proposed a set of three approaches to evaluate a dataset's sequential structure strength. We further analyzed a wide range of datasets from different domains that are commonly used for the evaluation of SRSs. The results of our experiments show that many popular datasets, namely Diginetica, Foursquare, Gowalla, RetailRocket, Steam, and Yelp, lack a sequential structure.
 Whether these datasets are suitable for evaluating sequential recommendations is questionable and needs further research.
 
-The datasets selected for evaluation must be aligned with the task at hand. Conclusions drawn about the relative performance of different algorithms may change after selecting more appropriate datasets. Whether this is true or not is a possible future research direction, as well as further investigation of approaches to the assessment of sequential structure in datasets.
+The datasets selected for evaluation must be aligned with the task at hand. Conclusions drawn about the relative performance of different algorithms may change after selecting more appropriate datasets. Whether this is true or not is a possible future research direction, as well as further investigation of approaches to the assessment of sequential structure in datasets.\
+
+On this table, you can observe the variation in key metrics expressed in percentages according to the formula: (1 - metrics after shuffle / metrics before shuffle) * 100%.
 
 | Dataset      | HR@10 | NDCG@10 | Jaccard@10 | 2-grams | 3-grams |
 |--------------|-------|---------|------------|---------|---------|
