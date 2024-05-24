@@ -8,7 +8,7 @@ Whether these datasets are suitable for evaluating sequential recommendations is
 
 The datasets selected for evaluation must be aligned with the task at hand. Conclusions drawn about the relative performance of different algorithms may change after selecting more appropriate datasets. Whether this is true or not is a possible future research direction, as well as further investigation of approaches to the assessment of sequential structure in datasets.
 
-On this table, you can observe the variation in key metrics expressed in percentages according to the formula: (1 - metrics after shuffle / metrics before shuffle) * 100%.
+On this table, you can observe the variation in key metrics expressed in percentages according to the formula: - (1 - metrics after shuffle / metrics before shuffle) * 100%.
 
 | Dataset      | HR@10 | NDCG@10 | Jaccard@10 | 2-grams | 3-grams |
 |--------------|-------|---------|------------|---------|---------|
