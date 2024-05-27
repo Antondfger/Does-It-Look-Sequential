@@ -33,7 +33,7 @@ Install requirements:
 ```sh
 pip install -r requirements.txt
 ```
-Specify environment variables. Where PATH4SEQ is the path to the project, RECSYS_DATA_PATH is the path to the raw data, PREP_DATA_PATH is the path where the data will be stored after preprocessing.
+Specify environment variables. Where PATH4SEQ is the path to the project, RECSYS_DATA_PATH is the path to the raw data, PREP_DATA_PATH is the path where the data will be stored after preprocessing, SPLIT_DATA_PATH is the path where the data will be stored after split.
 ```sh
 export PATH4SEQ="${PATH4SEQ}/your/path"
 
