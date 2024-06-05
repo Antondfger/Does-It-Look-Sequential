@@ -16,7 +16,7 @@ On this table, you can observe the variation in key metrics expressed in percent
 | Diginetica   | -14%  | -7%     | -6%        | -74%    | -94%    |
 | OTTO         | -30%  | -28%    | -50%       | -90%    | -96%    |
 | RetailRocket | -4%   | -2%     | -29%       | -54%    | -67%    |
-| SMM          | -47%  | -45%    | -44%       | -98%    | -98%    |
+| MegaMarket   | -47%  | -45%    | -44%       | -98%    | -98%    |
 | Sports       | -28%  | -32%    | -60%       | -94%    | -100%   |
 | Yoochoose    | -22%  | -27%    | -26%       | -82%    | -60%    |
 | Games        | -33%  | -38%    | -63%       | -92%    | -98%    |
