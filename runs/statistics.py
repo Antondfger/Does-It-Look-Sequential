@@ -48,7 +48,7 @@ def main(config):
             path_to_save_split=config.datasets_info.path_to_split_data,
             name=config.datasets_info.name)
 
-    stats = statistics(data, raw_data,  train, test, config)
+    stats = statistics(data)
 
     print(stats)
 

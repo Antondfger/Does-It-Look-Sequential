@@ -1,4 +1,4 @@
-cuda_visible_devices: 0
+cuda_visible_devices: 1
 random_state: 17
 defaults:
   - _self_
