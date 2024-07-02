@@ -1,0 +1,7 @@
+model: SASRec
+model_params:
+  maxlen: ${dataset_params.max_length}
+  hidden_units: 64
+  num_blocks: 2
+  num_heads: 2
+  dropout_rate: 0.1

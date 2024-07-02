@@ -5,12 +5,14 @@ import os
 import time
 import sys
 sys.path.append(os.environ['PATH4SEQ'])
+os.environ["WORLD_SIZE"] = "1"
 
 import hydra
 import numpy as np
 import pandas as pd
 import pytorch_lightning as pl
 import torch
+import random
 from clearml import Task
 from omegaconf import OmegaConf
 from pytorch_lightning.callbacks import (EarlyStopping, ModelCheckpoint,
@@ -20,7 +22,7 @@ from torch.utils.data import DataLoader
 from nn.datasets import (CausalLMDataset, CausalLMPredictionDataset,
                          PaddingCollateFn)
 from nn.metrics import Evaluator
-from nn.models import SASRec
+from nn.models import SASRec, RNN
 from nn.modules import SeqRec, SeqRecWithSampling
 from nn.postprocess import preds2recs
 from preprocessing.preparation import get_last_item, remove_last_item, shuffle
@@ -29,7 +31,7 @@ from preprocessing.splitter import session_split
 from stats.jaccard import jaccard_similarity
 
 
-@hydra.main(config_path="conf", config_name="SASRec")
+@hydra.main(config_path="conf", config_name="training")
 def main(config):
 
     print(OmegaConf.to_yaml(config, resolve=True))
@@ -55,6 +57,15 @@ def main(config):
         data = preprocessing(data, **config.prepr.prep_params, **config.datasets_info.column_name)
         train, validation, test = session_split(data, **config.splitter.split_params)
         max_item_id = data.item_id.max()
+
+    seed = config.random_state
+    torch.manual_seed(seed)
+    random.seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
 
     train_loader, eval_loader = create_dataloaders(train, validation, config)
     model = create_model(config, item_count=max_item_id)
@@ -86,7 +97,9 @@ def main(config):
         if task:
             clearml_logger = task.get_logger()
             clearml_logger.report_single_value('jaccard', sim['jaccard'] )
-            task.upload_artifact('jaccard.csv', recs_test)
+            task.upload_artifact('test_pred.csv', recs_test)
+            task.upload_artifact('shuffle_pred.csv', shuffle_recs_test)
+
 
 def create_dataloaders(train, validation, config):
 
@@ -111,7 +124,13 @@ def create_model(config, item_count):
     else:
         add_head = True
 
-    model = SASRec(item_num=item_count, add_head=add_head, **config.model_params)
+    if config.model.model=='SASRec':
+       model = SASRec(item_num=item_count, add_head=add_head, **config.model.model_params)
+    
+    if config.model.model=='RNN':
+        model = RNN(vocab_size=item_count + 1, add_head=add_head,
+                    rnn_config=config.model.model_params)
+
 
     return model
 

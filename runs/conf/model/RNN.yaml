@@ -1,0 +1,6 @@
+model: RNN
+model_params:
+  input_size: 64
+  hidden_size: 64
+  num_layers: 1
+  dropout: 0.1

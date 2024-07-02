@@ -116,6 +116,50 @@ class SASRec(torch.nn.Module):
         return outputs
 
 
+class RNN(nn.Module):
+
+    def __init__(self, vocab_size, rnn_config, add_head=True,
+                 tie_weights=True, padding_idx=0, init_std=0.02):
+
+        super().__init__()
+
+        self.vocab_size = vocab_size
+        self.rnn_config = rnn_config
+        self.add_head = add_head
+        self.tie_weights = tie_weights
+        self.padding_idx = padding_idx
+        self.init_std = init_std
+
+        self.embed_layer = nn.Embedding(num_embeddings=vocab_size,
+                                        embedding_dim=rnn_config['input_size'],
+                                        padding_idx=padding_idx)
+        self.rnn = nn.GRU(batch_first=True, bidirectional=False, **rnn_config)
+
+        if self.add_head:
+            self.head = nn.Linear(rnn_config['hidden_size'], vocab_size, bias=False)
+            if self.tie_weights:
+                self.head.weight = self.embed_layer.weight
+
+        self.init_weights()
+
+    def init_weights(self):
+
+        self.embed_layer.weight.data.normal_(mean=0.0, std=self.init_std)
+        if self.padding_idx is not None:
+            self.embed_layer.weight.data[self.padding_idx].zero_()
+
+    # parameter attention mask added for compatibility with Lightning module, not used
+    def forward(self, input_ids, attention_mask):
+
+        embeds = self.embed_layer(input_ids)
+        outputs, _ = self.rnn(embeds)
+
+        if self.add_head:
+            outputs = self.head(outputs)
+
+        return outputs
+
+
 class PointWiseFeedForward(torch.nn.Module):
     """Code from https://github.com/pmixer/SASRec.pytorch."""
 
