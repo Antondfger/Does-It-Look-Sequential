@@ -29,5 +29,5 @@ patience: 5
 top_k_metrics: [10]
 
 download_data: True
-project_name: sequential_datasets/gru4rec/${datasets_info.name}
+# project_name: sequential_datasets/gru4rec/${datasets_info.name}
 task_name: 'experiments'
