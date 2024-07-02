@@ -12,24 +12,23 @@ The datasets selected for evaluation must be aligned with the task at hand. Conc
 
 In this table, you can observe the change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. Large negative changes indicate strong sequential patterns, while smaller changes indicates weak sequential patterns.
 
-| Dataset      | HR@10 | NDCG@10 | Jaccard@10 | 2-grams | 3-grams |
-|--------------|-------|---------|------------|---------|---------|
-| Beauty       | -39%  | -43%    | -74%       | -97%    | -100%   |
-| Diginetica   | -14%  | -7%     | -6%        | -74%    | -94%    |
-| OTTO         | -30%  | -28%    | -50%       | -90%    | -96%    |
-| RetailRocket | -4%   | -2%     | -29%       | -54%    | -67%    |
-| MegaMarket   | -47%  | -45%    | -44%       | -98%    | -98%    |
-| Sports       | -28%  | -32%    | -60%       | -94%    | -100%   |
-| Yoochoose    | -22%  | -27%    | -26%       | -82%    | -60%    |
-| Games        | -33%  | -38%    | -63%       | -92%    | -98%    |
-| Steam        | -10%  | -12%    | -6%        | -100%   | -99%    |
-| ML-20m       | -59%  | -61%    | -59%       | -100%   | -100%   |
-| 30Music      | -90%  | -92%    | -59%       | -100%   | -100%   |
-| Zvuk         | -68%  | -70%    | -74%       | -99%    | -100%   |
-| Foursquare   | -7%   | -5%     | -59%       | -58%    | -78%    |
-| Gowalla      | -8%   | -8%     | 54%        | -56%    | -82%    |
-| Yelp         | -2%   | 5%      | -2%        | -95%    | -100%   |
-
+| Dataset      | HR@10 GRU | NDCG@10 GRU | jaccard@10 GRU | HR@10 Sas | NDCG@10 Sas | jaccard@10 Sas | 2-grams | 3-grams |
+| ------------ | --------- | ----------- | -------------- | --------- | ----------- | -------------- | ------- | ------- |
+| Beauty       | \-25%     | \-26%       | 0.23           | \-39%     | \-43%       | 0,24           | 0,00    | 0,00    |
+| Diginetica   | \-17%     | \-16%       | 0.44           | \-14%     | \-7%        | 0,52           | 0,26    | 0,08    |
+| OTTO         | \-40%     | \-37%       | 0.13           | \-30%     | \-28%       | 0,28           | 0,10    | 0,04    |
+| RetailRocket | \-7%      | \-5%        | 0.33           | \-4%      | \-2%        | 0,47           | 0,46    | 0,35    |
+| SMM          | \-58%     | \-56%       | 0.10           | \-47%     | \-45%       | 0,19           | 0,02    | 0,02    |
+| Sports       | \-17%     | \-18%       | 0.33           | \-28%     | \-32%       | 0,26           | 0,05    | 0,00    |
+| Yoochoose    | \-26%     | \-34%       | 0.38           | \-22%     | \-27%       | 0,46           | 0,18    | 0,40    |
+| Games        | \-17%     | \-17%       | 0.22           | \-33%     | \-38%       | 0,22           | 0,08    | 0,00    |
+| Steam        | \-8%      | \-9%        | 0.56           | \-10%     | \-12%       | 0,59           | 0,01    | 0,01    |
+| ML-20m       | \-63%     | \-67%       | 0.07           | \-59%     | \-61%       | 0,12           | 0,00    | 0,00    |
+| 30Music      | \-95%     | \-96%       | 0.02           | \-90%     | \-92%       | 0,12           | 0,00    | 0,00    |
+| Zvuk         | \-79%     | \-82%       | 0.05           | \-68%     | \-70%       | 0,11           | 0,01    | 0,00    |
+| Foursquare   | 0%        | 0%          | 1.00           | \-7%      | \-5%        | 0,39           | 0,42    | 0,45    |
+| Gowalla      | \-5%      | \-2%        | 0.26           | \-8%      | \-8%        | 0,45           | 0,44    | 0,18    |
+| Yelp         | \-7%      | \-7%        | 0.31           | \-2%      | 5%          | 0,37           | 0,00    | 0,00    |
 ## Usage
 Install requirements:
 ```sh
