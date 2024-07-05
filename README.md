@@ -14,7 +14,7 @@ In this table, you can observe the change in key metrics after shuffling accordi
 
 | Dataset      | HR@10 GRU4Rec | NDCG@10 GRU4Rec | jaccard@10 GRU4Rec | HR@10 SASRec | NDCG@10 SASRec | jaccard@10 SASRec | 2-grams | 3-grams |
 | ------------ | ------------- | --------------- | ------------------ | ------------ | -------------- | ----------------- | ------- | ------- |
-| Beauty       | \-25%         | \-26%           | 0.23               | \-39%        | \-43%          | 0,24              | 0,00    | 0,00    |
+| \*Beauty       | \-25%         | \-26%           | 0.23               | \-39%        | \-43%          | 0,24              | 0,00    | 0,00    |
 | Diginetica   | \-17%         | \-16%           | 0.44               | \-14%        | \-7%           | 0,52              | 0,26    | 0,08    |
 | OTTO         | \-40%         | \-37%           | 0.13               | \-30%        | \-28%          | 0,28              | 0,10    | 0,04    |
 | RetailRocket | \-7%          | \-5%            | 0.33               | \-4%         | \-2%           | 0,47              | 0,46    | 0,35    |
