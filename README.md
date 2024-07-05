@@ -62,7 +62,7 @@ Scripts to reproduce SASRec results: SASRec.sh \
 Scripts to reproduce GRU4Rec results: GRU4Rec.sh \
 Scripts to reproduce sequential rules: rule.sh \
 Scripts to reproduce dataset statistics: statistics.sh\
-Scripts to reproduce statistical test results: statistic_test.sh \
+Scripts to reproduce statistical test results: statistic_test.sh 
 
 
 ```sh
