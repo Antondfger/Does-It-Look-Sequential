@@ -5,5 +5,9 @@ defaults:
   - prepr: prepr
   - splitter: splitter
 
-# project_name: sequential_datasets/statistics
+metric_name: ndcg
+alpha: 0.05
+n_iter: 1000
+seed: 17
+project_name: sequential_datasets/statistic_test
 task_name: 'experiments'

@@ -116,7 +116,7 @@ class SASRec(torch.nn.Module):
         return outputs
 
 
-class RNN(nn.Module):
+class GRU4Rec(nn.Module):
 
     def __init__(self, vocab_size, rnn_config, add_head=True,
                  tie_weights=True, padding_idx=0, init_std=0.02):

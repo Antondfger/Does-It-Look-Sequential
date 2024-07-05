@@ -22,7 +22,7 @@ from torch.utils.data import DataLoader
 from nn.datasets import (CausalLMDataset, CausalLMPredictionDataset,
                          PaddingCollateFn)
 from nn.metrics import Evaluator
-from nn.models import SASRec, RNN
+from nn.models import SASRec, GRU4Rec
 from nn.modules import SeqRec, SeqRecWithSampling
 from nn.postprocess import preds2recs
 from preprocessing.preparation import get_last_item, remove_last_item, shuffle
@@ -127,8 +127,8 @@ def create_model(config, item_count):
     if config.model.model=='SASRec':
        model = SASRec(item_num=item_count, add_head=add_head, **config.model.model_params)
     
-    if config.model.model=='RNN':
-        model = RNN(vocab_size=item_count + 1, add_head=add_head,
+    if config.model.model=='GRU4Rec':
+        model = GRU4Rec(vocab_size=item_count + 1, add_head=add_head,
                     rnn_config=config.model.model_params)
 
 

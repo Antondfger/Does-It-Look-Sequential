@@ -1,4 +1,4 @@
-model: RNN
+model: GRU4Rec
 model_params:
   input_size: 64
   hidden_size: 64

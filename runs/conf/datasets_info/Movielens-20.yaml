@@ -2,6 +2,7 @@ name: Movielens-20
 data_path: ${oc.env:RECSYS_DATA_PATH}/Movielens-20.csv
 path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Movielens-20.csv
 path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+path_to_metrics_by_user: ${oc.env:METRICS_BY_USER_DATA_PATH}
 column_name:  
   user_id: 'userId'
   item_id: 'movieId'
