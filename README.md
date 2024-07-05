@@ -44,6 +44,8 @@ export RECSYS_DATA_PATH="/your/path"
 export PREP_DATA_PATH="/your/path"
 # path where the data will be stored after split
 export SPLIT_DATA_PATH="/your/path"
+# path with metrics count by user
+export METRICS_BY_USER_DATA_PATH="/your/path"
 ```
 
 For configuration we use [Hydra](https://hydra.cc/). Parameters are specified in [config files](runs/conf/), they can be overriden from the command line. Optionally it is possible to use [ClearML](`https://clear.ml/docs/latest/docs`) for experiments logging (`project_name` and `task_name` should be specified in config to use ClearML).
