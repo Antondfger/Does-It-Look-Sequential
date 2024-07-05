@@ -10,7 +10,8 @@ Whether these datasets are suitable for evaluating sequential recommendations is
 
 The datasets selected for evaluation must be aligned with the task at hand. Conclusions drawn about the relative performance of different algorithms may change after selecting more appropriate datasets. Whether this is true or not is a possible future research direction, as well as further investigation of approaches to the assessment of sequential structure in datasets.
 
-In this table, you can observe the change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. Large negative changes indicate strong sequential patterns, while smaller changes indicates weak sequential patterns. \\ 
+In this table, you can observe the change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. Large negative changes indicate strong sequential patterns, while smaller changes indicates weak sequential patterns. 
+
 \* means that the bootstrap showed statistically significant differences between shuffle and non-shuffle ndcg metrics for the users.
 
 | Dataset      | HR@10 GRU4Rec | NDCG@10 GRU4Rec | jaccard@10 GRU4Rec | HR@10 SASRec | NDCG@10 SASRec | jaccard@10 SASRec | 2-grams | 3-grams |
