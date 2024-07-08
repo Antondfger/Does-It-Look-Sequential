@@ -36,6 +36,7 @@ This table displays the percentage change in key metrics after shuffling accordi
 | Gowalla      | \-5%          | \-2%            | 0.26               | \-8%         | \-8%           | 0,45              | 0,44    | 0,18    |
 | Yelp         | \-7%          | \-7%            | 0.31               | \-2%         | 5%             | 0,37              | 0,00    | 0,00    |
 
+ ![Текст с описанием картинки](visualizations/heatmap.png)
 ## Usage
 Install requirements:
 ```sh
@@ -80,7 +81,3 @@ sh statistics.sh
 ```
 ## Datasets selection
  In the [datasets](datasets) folder, you will find detailed information about the process of selecting datasets for this project.
-
-
- ![Текст с описанием картинки](visualizations/heatmap.png)
-
