@@ -38,6 +38,10 @@ This table displays the percentage change in key metrics after shuffling accordi
 
 ![heatmap](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/06cca73e-a151-4a63-ba0b-2adbfa4140f7)
 
+![Scatter_plot_GRU](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/8ca7bf1f-ffca-4e14-9ea8-b6581ead33c8)
+
+![Scatter_plot_SasRec](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/978aed88-b021-4a43-b301-e99f066785e4)
+
 ## Usage
 Install requirements:
 ```sh
