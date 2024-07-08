@@ -14,7 +14,7 @@ The methodology of our experiments included studying metrics depending on the re
 
 This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec, as well as 2-grams and 3-grams sequential rules. Jaccard@10 was also calculated between the model predictions in the "before shuffle" and "after shuffle" modes for GRU4Rec and SASRec models. 
 
-This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec models, as well as sequential rules for 2-grams and 3-grams. Additionally, Jaccard@10 was calculated between the model predictions in the "before shuffle" and "after shuffle" modes for GRU4Rec and SASRec models. Low values of the metrics indicate that the dataset contains weak sequential structures.
+This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec models, as well as sequential rules for 2-grams and 3-grams. Also, the table contains the Jaccard@10 metric after shuffle (Jaccrad@10) calculated between the model predictions with inference on the original data and perturbed data.
 
 \* means that the bootstrap showed statistically significant differences between shuffle and non-shuffle ndcg metrics for the users.
 
