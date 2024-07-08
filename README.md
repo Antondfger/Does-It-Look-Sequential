@@ -12,7 +12,9 @@ The datasets selected for evaluation must be aligned with the task at hand. Conc
 
 The methodology of our experiments included studying metrics depending on the response to perturbations of sequences. In the "before shuffle" mode, we trained GRU4Rec and SASRec models on original sequences and observed changes in model-based metrics (HitRate, NDCG, Jaccard), as well as calculated sequential rules. In the "after shuffle" mode, for model-based metrics instead of original sequences, we used perturbed sequences, and sequential rules were calculated on perturbed sequences.
 
-This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec, as well as 2-grams and 3-grams sequential rules. Jaccard@10 was also calculated between the model predictions in the "before shuffle" and "after shuffle" modes for GRU4Rec and SASRec models.
+This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec, as well as 2-grams and 3-grams sequential rules. Jaccard@10 was also calculated between the model predictions in the "before shuffle" and "after shuffle" modes for GRU4Rec and SASRec models. 
+
+This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec models, as well as sequential rules for 2-grams and 3-grams. Additionally, Jaccard@10 was calculated between the model predictions in the "before shuffle" and "after shuffle" modes for GRU4Rec and SASRec models. Low values of the metrics indicate that the dataset contains weak sequential structures.
 
 \* means that the bootstrap showed statistically significant differences between shuffle and non-shuffle ndcg metrics for the users.
 
