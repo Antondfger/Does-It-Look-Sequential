@@ -10,7 +10,9 @@ Whether these datasets are suitable for evaluating sequential recommendations is
 
 The datasets selected for evaluation must be aligned with the task at hand. Conclusions drawn about the relative performance of different algorithms may change after selecting more appropriate datasets. Whether this is true or not is a possible future research direction, as well as further investigation of approaches to the assessment of sequential structure in datasets.
 
-In this table, you can observe the change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. Large negative changes indicate strong sequential patterns, while smaller changes indicates weak sequential patterns. 
+The methodology of our experiments involved examining model-based metrics (HitRate, NDCG, Jaccard) and sequential rules on sequences trained on unperturbed data. This mode is called "before shuffle". Furthermore, for model-based metrics for inference, instead of original sequences, we used perturbed sequences, and sequential rules were also calculated on perturbed sequences. This mode is called "After shuffle".
+
+In this table, you can observe the key metrics with after and before shuffle mode and the change in key metrics after shuffling according to the formula HitRate@10 (HR@10), NDCG@10 for GRU4Rec and SASRec, 2-grams and 3-grams sequential rules: (metric after shuffle / metric before shuffle - 1) * 100%.  
 
 \* means that the bootstrap showed statistically significant differences between shuffle and non-shuffle ndcg metrics for the users.
 
