@@ -38,9 +38,10 @@ This table displays the percentage change in key metrics after shuffling accordi
 ![heatmap](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/06cca73e-a151-4a63-ba0b-2adbfa4140f7)
 
 ## Scatter plot showing the relationship of model-based metrics NDCG@10 (relative change),  Jaccard@10 (after chuffle) for GRU4Rec and SASRec with 2-grams of sequential rules (relative change).
-![Scatter_plot_GRU](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/8ca7bf1f-ffca-4e14-9ea8-b6581ead33c8)
 
-![Scatter_plot_SasRec](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/978aed88-b021-4a43-b301-e99f066785e4)
+![Scatter_plot_GRU](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/e6829f03-5d16-420c-91d6-f529ed821998)
+
+![Scatter_plot_SasRec](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/54b25eb8-f6a5-410d-8677-010dd359acbc)
 
 ## Usage
 Install requirements:
