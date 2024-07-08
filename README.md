@@ -36,7 +36,7 @@ This table displays the percentage change in key metrics after shuffling accordi
 | Gowalla      | \-5%          | \-2%            | 0.26               | \-8%         | \-8%           | 0,45              | 0,44    | 0,18    |
 | Yelp         | \-7%          | \-7%            | 0.31               | \-2%         | 5%             | 0,37              | 0,00    | 0,00    |
 
- ![text]([visualizations/heatmap.png](https://github.com/Antondfger/Does-It-Look-Sequential/blob/main/visualizations/heatmap.png))
+ ![text](visualizations/heatmap.png)
 ## Usage
 Install requirements:
 ```sh
