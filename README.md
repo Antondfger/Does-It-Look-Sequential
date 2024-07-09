@@ -24,7 +24,7 @@ This table displays the percentage change in key metrics after shuffling accordi
 | RetailRocket | \-7%          | \-5%            | 0.33               | \-4%         | \-2%           | 0,47              | 0,46    | 0,35    |
 | \*SMM          | \-58%         | \-56%           | 0.10               | \-47%        | \-45%          | 0,19              | 0,02    | 0,02    |
 | Sports       | \-17%         | \-18%           | 0.33               | \-28%        | \-32%          | 0,26              | 0,05    | 0,00    |
-| \*Yoochoose    | \-26%         | \-34%           | 0.38               | \-22%        | \-27%          | 0,46              | 0,18    | 0,40    |
+| Yoochoose    | \-26%         | \-34%           | 0.38               | \-22%        | \-27%          | 0,46              | 0,18    | 0,40    |
 | \*Games        | \-17%         | \-17%           | 0.22               | \-33%        | \-38%          | 0,22              | 0,08    | 0,00    |
 | Steam        | \-8%          | \-9%            | 0.56               | \-10%        | \-12%          | 0,59              | 0,01    | 0,01    |
 | \*ML-20m       | \-63%         | \-67%           | 0.07               | \-59%        | \-61%          | 0,12              | 0,00    | 0,00    |
@@ -32,7 +32,7 @@ This table displays the percentage change in key metrics after shuffling accordi
 | \*Zvuk         | \-79%         | \-82%           | 0.05               | \-68%        | \-70%          | 0,11              | 0,01    | 0,00    |
 | Foursquare   | 0%            | 0%              | 1.00               | \-7%         | \-5%           | 0,39              | 0,42    | 0,45    |
 | Gowalla      | \-5%          | \-2%            | 0.26               | \-8%         | \-8%           | 0,45              | 0,44    | 0,18    |
-| Yelp         | \-7%          | \-7%            | 0.31               | \-2%         | 5%             | 0,37              | 0,00    | 0,00    |
+| \*Yelp         | \-7%          | \-7%            | 0.31               | \-2%         | 5%             | 0,37              | 0,00    | 0,00    |
 
 ## Heatmap for metrics calculated in the table.
 ![heatmap](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/06cca73e-a151-4a63-ba0b-2adbfa4140f7)
