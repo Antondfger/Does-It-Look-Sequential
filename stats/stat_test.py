@@ -10,8 +10,7 @@ def check_hyp_equality(df_pilot_group, df_control_group, metric_name, alpha=0.05
     bootstrap_control = np.random.choice(df_control_group[metric_name], size=(len(df_control_group), n_iter))
     
     bootstrap = bootstrap_pilot.mean(1) - bootstrap_control.mean(1)
-
-    mean = float(df_pilot_group.mean()- df_control_group.mean())
+    mean = float(df_pilot_group.mean() - df_control_group.mean())
     res = mean+float(norm.ppf(alpha/2)*bootstrap.std())<=0<=mean+float(norm.ppf(1-alpha/2)*bootstrap.std())
     
     return res, mean
