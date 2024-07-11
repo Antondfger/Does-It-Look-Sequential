@@ -14,7 +14,7 @@ The methodology of our experiments included analyzing metrics based on the respo
 
 This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec models, as well as sequential rules for 2-grams and 3-grams. Also, the table contains the Jaccard@10 after shuffle (Jaccrad@10) calculated between the model predictions with inference on the original data and perturbed data.
 
-\* means that the bootstrap showed statistically significant differences between shuffle and non-shuffle ndcg metrics for the users.
+\* means that the bootstrap didn't show statistically significant differences between shuffle and non-shuffle ndcg metrics for the users.
 
 | Dataset      | HR@10 GRU4Rec | NDCG@10 GRU4Rec | jaccard@10 GRU4Rec | HR@10 SASRec | NDCG@10 SASRec | jaccard@10 SASRec | 2-grams | 3-grams |
 | ------------ | ------------- | --------------- | ------------------ | ------------ | -------------- | ----------------- | ------- | ------- |
