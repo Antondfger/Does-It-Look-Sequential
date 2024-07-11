@@ -43,7 +43,7 @@ class Evaluator:
             train (pd.DataFrame): Dataframe with train data.
             
         Returns:
-            Cosine similarity
+            metrics
         """
 
         if not hasattr(test, 'rating'):
