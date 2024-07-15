@@ -67,7 +67,7 @@ For configuration we use [Hydra](https://hydra.cc/). Parameters are specified in
 Example of run via command line:
 ```sh
 cd runs
-python dl.py datasets_info=Movielens
+python dl.py datasets_info=Movielens-20
 ```
 ## Reproduce paper results
 Scripts to reproduce SASRec results: SASRec.sh \
