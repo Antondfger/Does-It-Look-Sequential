@@ -35,13 +35,13 @@ This table displays the percentage change in key metrics after shuffling accordi
 | \*Yelp       | \-7%          | \-7%            | 0.31               | \-2%         | 5%             | 0,37              | 0,00    | 0,00    |
 
 ## Heatmap for metrics calculated in the table.
-![heatmap](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/06cca73e-a151-4a63-ba0b-2adbfa4140f7)
+![heatmap](visualizations/heatmap.png)
 
 ## Scatter plot showing the relationship of model-based metrics NDCG@10 (relative change),  Jaccard@10 (after chuffle) for GRU4Rec and SASRec with 2-grams of sequential rules (relative change).
 
-![Scatter_plot_GRU](visualizations/Scatter_plot_SasRec.png)
+![Scatter_plot_GRU](visualizations/Scatter_plot_GRU.png)
 
-![Scatter_plot_SasRec](https://github.com/Antondfger/Does-It-Look-Sequential/assets/98619025/54b25eb8-f6a5-410d-8677-010dd359acbc)
+![Scatter_plot_SasRec](visualizations/Scatter_plot_SasRec.png)
 
 ## Usage
 Install requirements:
