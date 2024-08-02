@@ -37,11 +37,11 @@ This table displays the percentage change in key metrics after shuffling accordi
 ## Heatmap for metrics calculated in the table.
 <img src="visualizations/heatmap.png" alt="drawing" width="600"/>
 
-visualizations/Scatter_plot_GRU.png
-
 ## Scatter plot showing the relationship of model-based metrics NDCG@10 (relative change),  Jaccard@10 (after chuffle) for GRU4Rec and SASRec with 2-grams of sequential rules (relative change).
 
 <img src="visualizations/Scatter_plot_GRU.png" alt="drawing" width="600"/>
+<img src="visualizations/Scatter_plot_SasRec.png" alt="drawing" width="600"/>
+
 
 ## Usage
 Install requirements:
