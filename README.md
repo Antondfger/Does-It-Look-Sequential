@@ -35,7 +35,9 @@ This table displays the percentage change in key metrics after shuffling accordi
 | \*Yelp       | \-7%          | \-7%            | 0.31               | \-2%         | 5%             | 0,37              | 0,00    | 0,00    |
 
 ## Heatmap for metrics calculated in the table.
-![heatmap](visualizations/heatmap.png)
+<img src="visualizations/heatmap.png" alt="drawing" width="600"/>
+
+visualizations/Scatter_plot_GRU.png
 
 ## Scatter plot showing the relationship of model-based metrics NDCG@10 (relative change),  Jaccard@10 (after chuffle) for GRU4Rec and SASRec with 2-grams of sequential rules (relative change).
 
