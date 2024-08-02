@@ -41,7 +41,7 @@ This table displays the percentage change in key metrics after shuffling accordi
 
 ![Scatter_plot_GRU](visualizations/Scatter_plot_GRU.png)
 
-![Scatter_plot_SasRec](visualizations/Scatter_plot_SasRec.png)
+![<img src="visualizations/Scatter_plot_SasRec.png" width="250"/>](visualizations/Scatter_plot_SasRec.png)
 
 ## Usage
 Install requirements:
