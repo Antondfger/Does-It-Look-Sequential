@@ -1,29 +1,29 @@
-python statistic_test.py datasets_info=Movielens-20
+python statistic_test.py datasets_info=Movielens-20 name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=30Music 
+python statistic_test.py datasets_info=30Music name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Foursquare
+python statistic_test.py datasets_info=Foursquare name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Yoochoose
+python statistic_test.py datasets_info=Yoochoose name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Retailrocket
+python statistic_test.py datasets_info=Retailrocket name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Yelp
+python statistic_test.py datasets_info=Yelp name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Beauty
+python statistic_test.py datasets_info=Beauty name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Gowalla
+python statistic_test.py datasets_info=Gowalla name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Zvuk
+python statistic_test.py datasets_info=Zvuk name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Smm
+python statistic_test.py datasets_info=Smm name=SASRec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Otto
+python statistic_test.py datasets_info=Otto name=SASRec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Steam 
+python statistic_test.py datasets_info=Steam name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Diginetica 
+python statistic_test.py datasets_info=Diginetica name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Sports 
+python statistic_test.py datasets_info=Sports name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun
 
-python statistic_test.py datasets_info=Games
+python statistic_test.py datasets_info=Games name=GRU4Rec,SASRec metric_name=ndcg,hitrate --multirun

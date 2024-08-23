@@ -26,8 +26,8 @@ def main(config):
     else:
         task = None
 
-    result, mean = stat_diff(data_folder=config.datasets_info.path_to_metrics_by_user, dataset=config.datasets_info.name, 
-                             metric_name=config.metric_name, alpha=config.alpha, n_iter=config.n_iter, seed=config.seed)
+    result, mean = stat_diff(data_folder=config.datasets_info.path_to_metrics_by_user, dataset=config.datasets_info.name,
+                             name=config.name, metric_name=config.metric_name, alpha=config.alpha, n_iter=config.n_iter, seed=config.seed)
 
     print(result, mean)
 
