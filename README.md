@@ -1,5 +1,5 @@
 # Does It Look Sequential? An Analysis of Datasets for Evaluation of Sequential Recommendations
-This repository contains code for paper ["Does It Look Sequential? An Analysis of Datasets for Evaluation of Sequential Recommendations?"](
+This repository contains code for ACM RecSys 2023 paper ["Does It Look Sequential? An Analysis of Datasets for Evaluation of Sequential Recommendations?"](
 https://doi.org/10.48550/arXiv.2408.12008)
 ## Abstract
 Sequential recommender systems are an important and demanded area of research. Such systems aim to use the order of interactions in a user’s history to predict future interactions. The premise is that the order of interactions and sequential patterns play an important role. Therefore, it is crucial to use datasets that exhibit a sequential structure for a proper evaluation of sequential recommenders. \
