@@ -1,0 +1,26 @@
+rule_params:
+  n_gram_order: 2
+  support_threshold: 5
+  confidence_threshold: 0.1
+random_state: 17
+download_data: true
+task_name: experiments
+datasets_info:
+  name: Beauty
+  data_path: ${oc.env:RECSYS_DATA_PATH}/Beauty.csv
+  path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Beauty.csv
+  path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+  path_to_metrics_by_user: ${oc.env:METRICS_BY_USER_DATA_PATH}
+  column_name:
+    user_id: reviewerID
+    item_id: asin
+    timestamp: unixReviewTime
+  time_coding: s
+prepr:
+  prep_params:
+    users_sample: null
+    item_min_count: 5
+    min_len: 5
+    drop_repeats: true
+    core: true
+    encoding: true

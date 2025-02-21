@@ -1,6 +1,6 @@
 defaults:
   - _self_
-  - datasets_info: Movielens
+  - datasets_info: Beauty
   - prepr: prepr 
 
 rule_params:

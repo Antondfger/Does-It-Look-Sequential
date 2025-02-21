@@ -5,7 +5,7 @@ import os
 import time
 import sys
 sys.path.append(os.environ['PATH4SEQ'])
-os.environ["WORLD_SIZE"] = "1"
+os.environ["WORLD_SIZE"] = "0"
 
 import hydra
 import numpy as np
@@ -26,7 +26,7 @@ from nn.models import SASRec, GRU4Rec
 from nn.modules import SeqRec, SeqRecWithSampling
 from nn.postprocess import preds2recs
 from preprocessing.preparation import get_last_item, remove_last_item, shuffle
-from preprocessing.preprocessing import preprocessing
+from preprocessing.preprocessing import preprocessing, print_stats
 from preprocessing.splitter import session_split
 from stats.jaccard import jaccard_similarity
 
@@ -47,17 +47,21 @@ def main(config):
 
     if config.download_data:
         path_to_split = config.datasets_info.path_to_split_data
-        train = pd.read_csv(path_to_split + 'train_' + config.datasets_info.name + '.csv')
-        test = pd.read_csv(path_to_split + 'test_' + config.datasets_info.name + '.csv')
-        validation = pd.read_csv(path_to_split + 'validation_' + config.datasets_info.name + '.csv')
+        core = config.download_core
+        train = pd.read_csv(path_to_split + 'train_' +  f'core_{core}_' + config.datasets_info.name + '.csv')
+        test = pd.read_csv(path_to_split + 'test_' +  f'core_{core}_' + config.datasets_info.name + '.csv')
+        validation = pd.read_csv(path_to_split + 'validation_' +  f'core_{core}_' + config.datasets_info.name + '.csv')
         max_item_id = max(train.item_id.max(), test.item_id.max(), validation.item_id.max())
-
+        
     else:
         data = pd.read_csv(config.datasets_info.data_path)
         data = preprocessing(data, **config.prepr.prep_params, **config.datasets_info.column_name)
         train, validation, test = session_split(data, **config.splitter.split_params)
         max_item_id = data.item_id.max()
-
+    
+    train = cut_data(train, config.dataset_params.max_length)
+    test = cut_data(test, config.dataset_params.max_length)
+    
     seed = config.random_state
     torch.manual_seed(seed)
     random.seed(seed)
@@ -66,7 +70,10 @@ def main(config):
         torch.cuda.manual_seed_all(seed)
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
-
+    
+    if config.shuffle:
+        train = shuffle(train, config.random_state)
+                
     train_loader, eval_loader = create_dataloaders(train, validation, config)
     model = create_model(config, item_count=max_item_id)
     start_time = time.time()
@@ -83,12 +90,13 @@ def main(config):
     test_last_item = get_last_item(test)
     recs_test = predict(trainer, seqrec_module, test_inputs, config)
     evaluate(recs_test, test_last_item, task, config, prefix='test')
-
+   
     if config.shuffle_inference:
         shuffle_test_inputs = shuffle(test_inputs, config.random_state)
         shuffle_recs_test = predict(trainer, seqrec_module, shuffle_test_inputs, config)
         evaluate(shuffle_recs_test, test_last_item, task, config, prefix='shuffle_inf')
-
+        
+        
     if config.jaccard and config.shuffle_inference:
         sim = pd.Series()
         sim['jaccard'] = jaccard_similarity(recs_test, shuffle_recs_test)
@@ -99,6 +107,26 @@ def main(config):
             clearml_logger.report_single_value('jaccard', sim['jaccard'] )
             task.upload_artifact('test_pred.csv', recs_test)
             task.upload_artifact('shuffle_pred.csv', shuffle_recs_test)
+
+    if config.change_filter_seen:
+        seqrec_module.filter_seen = not seqrec_module.filter_seen
+        recs_test = predict(trainer, seqrec_module, test_inputs, config)
+        evaluate(recs_test, test_last_item, task, config, prefix='test_change_fs')
+        if config.shuffle_inference:
+            shuffle_test_inputs = shuffle(test_inputs, config.random_state)
+            shuffle_recs_test = predict(trainer, seqrec_module, shuffle_test_inputs, config)
+            evaluate(shuffle_recs_test, test_last_item, task, config, prefix='shuffle_inf_change_fs')
+            
+    if config.jaccard and config.shuffle_inference and config.change_filter_seen:
+        sim = pd.Series()
+        sim['jaccard'] = jaccard_similarity(recs_test, shuffle_recs_test)
+        print(sim['jaccard'])
+
+        if task:
+            clearml_logger = task.get_logger()
+            clearml_logger.report_single_value('jaccard_change', sim['jaccard'] )
+            task.upload_artifact('test_pred_change.csv', recs_test)
+            task.upload_artifact('shuffle_pred_change.csv', shuffle_recs_test)
 
 
 def create_dataloaders(train, validation, config):
@@ -183,27 +211,33 @@ def predict(trainer, seqrec_module, data, config):
 
 
 def evaluate(recs, test_last, task, config, prefix='test'):
-
-    all_metrics = {}
-
-    for k in config.top_k_metrics:
-        evaluator = Evaluator(top_k=[k])
-        metrics = evaluator.compute_metrics(test_last, recs)
-        metrics = {prefix + '_' + key: value for key, value in metrics.items()}
-        all_metrics.update(metrics)
+    
+    evaluator = Evaluator(metrics=list(config.metrics), topk=list(config.top_k_metrics), modes=list(config.modes))
+    metrics = evaluator.compute_metrics(test_last, recs)
+    print(metrics)
 
     if task:
-
+        
         clearml_logger = task.get_logger()
 
-        for key, value in all_metrics.items():
-            clearml_logger.report_single_value(key, value)
-        all_metrics = pd.Series(all_metrics).to_frame().reset_index()
-        all_metrics.columns = ['metric_name', 'metric_value']
-
+        for key, value in metrics.items():
+            clearml_logger.report_single_value(prefix + '_' +  key, value)
+        
         clearml_logger.report_table(title=f'{prefix}_metrics', series='dataframe',
-                                    table_plot=all_metrics)
-        task.upload_artifact(f'{prefix}_metrics', all_metrics)
+                                    table_plot=metrics)
+        task.upload_artifact(f'{prefix}_metrics', metrics)
+        
+    return metrics
+
+
+def cut_data(data, max_len, user_id='user_id', timestamp='timestamp'):
+    data = data.sort_values(by=timestamp, ascending=False)
+    data = data.groupby(user_id).head(max_len).reset_index(drop=True)
+    data.sort_values([user_id, timestamp], inplace=True)
+    
+    print_stats(data, text='cut data')
+    
+    return data
 
 
 if __name__ == "__main__":

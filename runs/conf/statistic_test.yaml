@@ -10,5 +10,5 @@ metric_name: ndcg
 alpha: 0.05
 n_iter: 10000
 seed: 17
-project_name: sequential_datasets/bootstrap
-task_name: 'experiments'
+# project_name: sequential_datasets/bootstrap
+# task_name: 'experiments'

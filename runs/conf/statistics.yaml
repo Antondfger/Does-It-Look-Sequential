@@ -1,9 +1,10 @@
-cuda_visible_devices: 0
 defaults:
   - _self_
-  - datasets_info: Movielens
+  - datasets_info: Beauty
   - prepr: prepr
   - splitter: splitter
+download_data: False
+download_core: 5
 
-# project_name: sequential_datasets/statistics
+project_name: sequential_datasets/statistics
 task_name: 'experiments'

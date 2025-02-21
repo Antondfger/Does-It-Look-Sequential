@@ -1,0 +1,62 @@
+cuda_visible_devices: 3
+random_state: 17
+shuffle: false
+shuffle_inference: true
+jaccard: true
+change_filter_seen: true
+download_data: true
+download_core: 5
+dataset_params:
+  max_length: 128
+dataloader:
+  batch_size: 128
+  test_batch_size: 256
+  num_workers: 8
+seqrec_module:
+  lr: 0.001
+  predict_top_k: 10
+  filter_seen: false
+trainer_params:
+  max_epochs: 100
+patience: 5
+top_k_metrics:
+- 10
+metrics:
+- NDCG
+- HitRate
+- Precision
+- Recall
+- MRR
+modes:
+- Mean
+datasets_info:
+  name: Beauty
+  data_path: ${oc.env:RECSYS_DATA_PATH}/Beauty.csv
+  path_to_prep_data: ${oc.env:PREP_DATA_PATH}/Beauty.csv
+  path_to_split_data: ${oc.env:SPLIT_DATA_PATH}/
+  path_to_metrics_by_user: ${oc.env:METRICS_BY_USER_DATA_PATH}
+  column_name:
+    user_id: reviewerID
+    item_id: asin
+    timestamp: unixReviewTime
+  time_coding: s
+prepr:
+  prep_params:
+    users_sample: null
+    item_min_count: 5
+    min_len: 5
+    drop_repeats: true
+    core: true
+    encoding: true
+splitter:
+  split_params:
+    boundary: 0.9
+    validation_size: 500
+model:
+  model: SASRec
+  model_params:
+    maxlen: ${dataset_params.max_length}
+    hidden_units: 64
+    num_blocks: 2
+    num_heads: 2
+    dropout_rate: 0.1

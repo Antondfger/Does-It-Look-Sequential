@@ -33,23 +33,20 @@ def main(config):
 
     if config.download_data:
         path_to_split = config.datasets_info.path_to_split_data
-        train = pd.read_csv(path_to_split + 'train_' + config.datasets_info.name + '.csv')
-        test = pd.read_csv(path_to_split + 'test_' + config.datasets_info.name + '.csv')
-        validation = pd.read_csv(path_to_split + 'validation_' + config.datasets_info.name + '.csv')
-
-        path_to_prep = config.datasets_info.path_to_prep_data
-        data = pd.read_csv(path_to_prep)
+        core = config.download_core
+        data = pd.read_csv(path_to_split + 'test_' +  f'core_{core}_' + config.datasets_info.name + '.csv')
+        data = pd.read_csv(config.datasets_info.data_path)
+        data = rename(raw_data, **config.datasets_info.column_name)
+        data_path = config.datasets_info.data_path
+        data = pd.read_csv(data_path)
+     
 
     else:
-        data = preprocessing(raw_data, **config.prepr.prep_params,
-                             path_to_save_prep=config.datasets_info.path_to_prep_data)
-        train, validation, test = session_split(
-            data, **config.splitter.split_params,
-            path_to_save_split=config.datasets_info.path_to_split_data,
-            name=config.datasets_info.name)
-
+        core = str(min(config.prepr.prep_params.min_len, config.prepr.prep_params.item_min_count))
+        data = preprocessing(raw_data, **config.prepr.prep_params)
+   
     stats = statistics(data)
-
+    
     print(stats)
 
     if task:

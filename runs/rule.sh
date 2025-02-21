@@ -27,3 +27,9 @@ python rule.py --multirun datasets_info=Steam random_state=17,32,47,62,77 rule_p
 python rule.py --multirun datasets_info=Diginetica random_state=17,32,47,62,77 rule_params.n_gram_order=2,3 rule_params.support_threshold=5 rule_params.confidence_threshold=0.1 
 
 python rule.py --multirun datasets_info=Movielens-20 random_state=17,32,47,62,77 rule_params.n_gram_order=2,3 rule_params.support_threshold=5 rule_params.confidence_threshold=0.1 
+
+python rule.py --multirun datasets_info=Dressipi random_state=17,32,47,62,77 rule_params.n_gram_order=2,3 rule_params.support_threshold=5 rule_params.confidence_threshold=0.1 
+
+python rule.py --multirun datasets_info=Taobao random_state=17,32,47,62,77 rule_params.n_gram_order=2,3 rule_params.support_threshold=5 rule_params.confidence_threshold=0.1 
+
+python rule.py --multirun datasets_info=Tmall random_state=17,32,47,62,77 rule_params.n_gram_order=2,3 rule_params.support_threshold=5 rule_params.confidence_threshold=0.1 

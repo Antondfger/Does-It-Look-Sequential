@@ -1,14 +1,18 @@
-cuda_visible_devices: 1
+cuda_visible_devices: 3
 random_state: 17
 defaults:
   - _self_
-  - datasets_info: Movielens
+  - datasets_info: Beauty
   - prepr: prepr
   - splitter: splitter
   - model: SASRec
 
+shuffle: False
 shuffle_inference: True
 jaccard: True
+change_filter_seen: True
+download_data: True
+download_core: 5
 
 dataset_params:
   max_length: 128
@@ -27,7 +31,8 @@ trainer_params:
   max_epochs: 100
 patience: 5
 top_k_metrics: [10]
+metrics: ['NDCG', 'HitRate', 'Precision', 'Recall', 'MRR']
+modes: ['Mean']
 
-download_data: True
-project_name: sequential_datasets/final/${model.model}/${datasets_info.name}
-task_name: 'experiments'
+# project_name: sequential_datasets/recalc/${model.model}/${datasets_info.name}
+# task_name: 'experiments'
