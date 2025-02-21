@@ -1,39 +1,56 @@
 """
 Metrics.
 """
+import inspect
+import pandas as pd
+from replay import metrics as base_class
+from replay.metrics import OfflineMetrics
 
-from recommenders.evaluation import python_evaluation
 
-
-DEFAULT_METRICS = ['map_at_k', 'ndcg_at_k', 'recall_at_k', 'precision_at_k']
-DEFAULT_METRICS_BEYOND_ACCURACY = ['catalog_coverage', 'distributional_coverage', 'novelty']
-
-METRIC_NAMES = {
-    'map_at_k': 'map',
-    'ndcg_at_k': 'ndcg',
-    'recall_at_k': 'recall',
-    'precision_at_k': 'precision',
-    'catalog_coverage': 'coverage',
-    'distributional_coverage': 'entropy'
-}
-
+DEFAULT_METRICS = ['NDCG', 'HitRate', 'Precision', 'Recall', 'MRR']
 
 class Evaluator:
-    """Class for computing recommendation metrics."""
+    """Class for computing recommendation metrics.
+    """
 
-    def __init__(self, metrics=DEFAULT_METRICS,
-                 metrics_beyond_accuracy=DEFAULT_METRICS_BEYOND_ACCURACY,
-                 top_k=[10], col_user='user_id', col_item='item_id',
-                 col_prediction='prediction', col_rating='rating'):
-
+    def __init__(self, metrics=DEFAULT_METRICS, topk=[10, 100], modes=['Mean'], user_id='user_id', item_id='item_id',                            rating_columns='prediction'):
+        """Args:
+            metrics (list): List with metrics name. The names are taken from the Replay.
+            topk (list): Consider the highest k scores in the ranking. Defaults to [10, 100].
+            modes (list): Classes for calculating aggregation metrics. Defaults to Mean. Available modes: Median,         ConfidenceInterval, PerUser.
+            user_id (str): Defaults to 'user_id'.
+            item_id (str): Defaults to 'item_id'.
+            rating_columns (str): Defaults to 'rating'."""
+        
         self.metrics = metrics
-        self.metrics_beyond_accuracy = metrics_beyond_accuracy
-        self.top_k = top_k
-        self.col_user = col_user
-        self.col_item = col_item
-        self.col_prediction = col_prediction
-        self.col_rating = col_rating
+        self.topk = topk
+        self.modes = modes
+        self.user_id = user_id
+        self.item_id = item_id
+        self.rating = rating_columns
+        
+        class_method = [x[0] for x in inspect.getmembers(base_class)[:19]]
 
+        if type(metrics) != list:
+            raise ValueError("Use the list data type for metrics.")
+        
+        if type(topk) != list:
+            raise ValueError("Use the list data type for topk.")
+        
+        if type(modes) != list:
+            raise ValueError("Use the list data type for modes.")
+        
+        if len(modes) > 1 and 'PerUser' in modes:
+            raise ValueError("Mode 'PerUser' can use only alone.")
+
+        for mode in modes:
+            if mode not in class_method:
+                raise ValueError(f"{mode} is not available in Replay. Look at the documentation. https://sb-ai-                                                      lab.github.io/RePlay/pages/modules/metrics.html#replay.metrics")
+            
+        for metric in metrics:
+            if metric not in class_method:
+                raise ValueError(f"{metric} is not available in Replay. Look at the documentation. https://sb-ai-                                                    lab.github.io/RePlay/pages/modules/metrics.html#replay.metrics")
+         
     def compute_metrics(self, test, recs, train=None):
         """Compute all metrics.
 
@@ -45,26 +62,16 @@ class Evaluator:
         Returns:
             metrics
         """
+        
+        metrics_list = []
+        for metric in self.metrics:
+            for k in self.topk:
+                for mode in self.modes:
+                    mode = getattr(base_class, mode)()
+                    metrics_list.append(getattr(base_class, metric)(topk=k, mode=mode))
+        
+        metrics = OfflineMetrics(metrics_list, query_column=self.user_id, 
+                                 item_column=self.item_id, rating_column=self.rating)(recs, test, train)
+        metrics = pd.DataFrame.from_dict(metrics, orient='index').T
 
-        if not hasattr(test, 'rating'):
-            test = test.assign(rating=1)
-
-        result = {}
-        for k in self.top_k:
-            for metric in self.metrics:
-                metric_obj = getattr(python_evaluation, metric)
-                metric_name = METRIC_NAMES.get(metric) or metric
-                result[f'{metric_name}@{k}'] = metric_obj(
-                    test, recs,  k=k, col_user=self.col_user, col_item=self.col_item,
-                    col_prediction=self.col_prediction, col_rating=self.col_rating)
-            if train is not None:
-                for metric in self.metrics_beyond_accuracy:
-                    metric_obj = getattr(python_evaluation, metric)
-                    metric_name = METRIC_NAMES.get(metric) or metric
-                    try:
-                        result[f'{metric_name}@{k}'] = metric_obj(
-                            train, recs, col_user=self.col_user, col_item=self.col_item)
-                    except:
-                        pass
-
-        return result
+        return metrics

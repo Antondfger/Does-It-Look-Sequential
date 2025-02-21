@@ -7,42 +7,6 @@ We apply several methods based on the random shuffling of the user's sequence of
 
 ## Main results
 In this paper, we proposed a set of three approaches to evaluate a dataset's sequential structure strength. We further analyzed a wide range of datasets from different domains that are commonly used for the evaluation of SRSs. The results of our experiments show that many popular datasets, namely Diginetica, Foursquare, Gowalla, RetailRocket, Steam, and Yelp, lack a sequential structure.
-Whether these datasets are suitable for evaluating sequential recommendations is questionable and needs further research.
-
-The datasets selected for evaluation must be aligned with the task at hand. Conclusions drawn about the relative performance of different algorithms may change after selecting more appropriate datasets. Whether this is true or not is a possible future research direction, as well as further investigation of approaches to the assessment of sequential structure in datasets.
-
-The methodology of our experiments included analyzing metrics based on the response to perturbations in sequences. In the "before shuffle" mode, we trained GRU4Rec and SASRec models on original sequences and monitored changes in model-based metrics (HitRate@10 (HR@10), NDCG@10, Jaccard@10), as well as computed sequential rules. In the "after shuffle" mode, for model-based metrics, we utilized perturbed sequences instead of the original ones, without altering the models trained on the original data. Sequential rules were calculated based on the perturbed sequences in this mode.
-
-This table displays the percentage change in key metrics after shuffling according to the formula: (metric after shuffle / metric before shuffle - 1) * 100%. The metrics include HitRate, NDCG@10 for GRU4Rec and SASRec models, as well as sequential rules for 2-grams and 3-grams. Also, the table contains the Jaccard@10 after shuffle (Jaccrad@10) calculated between the model predictions with inference on the original data and perturbed data.
-
-\* means that the bootstrap didn't show statistically significant differences between shuffle and non-shuffle ndcg metrics for the users.
-
-| Dataset      | HR@10 GRU4Rec | NDCG@10 GRU4Rec | jaccard@10 GRU4Rec | HR@10 SASRec | NDCG@10 SASRec | jaccard@10 SASRec | 2-grams | 3-grams |
-| ------------ | ------------- | --------------- | ------------------ | ------------ | -------------- | ----------------- | ------- | ------- |
-| Beauty       | \-25%         | \-26%           | 0.23               | \-39%        | \-43%          | 0,24              | -97%    | -100%   |
-| \*Diginetica | \-17%         | \-16%           | 0.44               | \-14%        | \-7%           | 0,52              | -74%    | -94%    |
-| OTTO         | \-40%         | \-37%           | 0.13               | \-30%        | \-28%          | 0,28              | -90%    | -96%    |
-|\*RetailRocket| \-7%          | \-5%            | 0.33               | \-4%         | \-2%           | 0,47              | -54%    | -67%    |
-| MegaMarket   | \-58%         | \-56%           | 0.10               | \-47%        | \-45%          | 0,19              | -98%    | -98%    |
-| \*Sports     | \-17%         | \-18%           | 0.33               | \-28%        | \-32%          | 0,26              | -94%    | -100%   |
-| Yoochoose    | \-26%         | \-34%           | 0.38               | \-22%        | \-27%          | 0,46              | -82%    | -60%    |
-| Games        | \-17%         | \-17%           | 0.22               | \-33%        | \-38%          | 0,22              | -92%    | -98%    |
-| \*Steam      | \-8%          | \-9%            | 0.56               | \-10%        | \-12%          | 0,59              | -100%   | -99%    |
-| ML-20m       | \-63%         | \-67%           | 0.07               | \-59%        | \-61%          | 0,12              | -100%   | -100%   |
-| 30Music      | \-95%         | \-96%           | 0.02               | \-90%        | \-92%          | 0,12              | -100%   | -100%   |
-| Zvuk         | \-79%         | \-82%           | 0.05               | \-68%        | \-70%          | 0,11              | -99%    | -100%   |
-| \*Foursquare | 0%            | 0%              | 1.00               | \-7%         | \-5%           | 0,39              | -58%    | -78%    |
-| \*Gowalla    | \-5%          | \-2%            | 0.26               | \-8%         | \-8%           | 0,45              | -56%    | -82%    |
-| \*Yelp       | \-7%          | \-7%            | 0.31               | \-2%         | 5%             | 0,37              | -95%    | -100%   |
-
-## Heatmap for metrics calculated in the table.
-<img src="visualizations/heatmap.png" alt="drawing" width="600"/>
-
-## Scatter plot showing the relationship of model-based metrics NDCG@10 (relative change),  Jaccard@10 (after chuffle) for GRU4Rec and SASRec with 2-grams of sequential rules (relative change).
-
-<img src="visualizations/Scatter_plot_GRU.png" alt="drawing" width="600"/>
-<img src="visualizations/Scatter_plot_SasRec.png" alt="drawing" width="600"/>
-
 
 ## Usage
 Install requirements:
@@ -59,8 +23,6 @@ export RECSYS_DATA_PATH="/your/path"
 export PREP_DATA_PATH="/your/path"
 # path where the data will be stored after split
 export SPLIT_DATA_PATH="/your/path"
-# path with metrics count by user
-export METRICS_BY_USER_DATA_PATH="/your/path"
 ```
 
 For configuration we use [Hydra](https://hydra.cc/). Parameters are specified in [config files](runs/conf/), they can be overriden from the command line. Optionally it is possible to use [ClearML](`https://clear.ml/docs/latest/docs`) for experiments logging (`project_name` and `task_name` should be specified in config to use ClearML).
@@ -71,18 +33,20 @@ cd runs
 python dl.py datasets_info=Movielens-20
 ```
 ## Reproduce paper results
-Scripts to reproduce SASRec results: SASRec.sh \
-Scripts to reproduce GRU4Rec results: GRU4Rec.sh \
+Scripts to reproduce 2-core results: 2_core.sh \
+Scripts to reproduce 5-core results: 5_core.sh \
+Scripts to reproduce 10-core results: 10_core.sh \
+Scripts to reproduce shuffle in training results: 5_core-shuffle.sh \
 Scripts to reproduce sequential rules: rule.sh \
 Scripts to reproduce dataset statistics: statistics.sh\
-Scripts to reproduce statistical test results: statistic_test.sh 
 
 
 ```sh
 cd runs
-sh SASRec.sh
-sh GRU4Rec.sh
-sh statistic_test.sh
+sh 2_core.sh
+sh 5_core.sh
+sh 10_core.sh
+sh 5_core-shuffle.sh
 sh rule.sh
 sh statistics.sh
 ```
