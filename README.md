@@ -38,7 +38,7 @@ Scripts to reproduce 5-core results: 5_core.sh \
 Scripts to reproduce 10-core results: 10_core.sh \
 Scripts to reproduce shuffle in training results: 5_core-shuffle.sh \
 Scripts to reproduce sequential rules: rule.sh \
-Scripts to reproduce dataset statistics: statistics.sh\
+Scripts to reproduce dataset statistics: statistics.sh
 
 
 ```sh
